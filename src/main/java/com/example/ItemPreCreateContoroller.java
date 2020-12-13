@@ -39,7 +39,7 @@ public class ItemPreCreateContoroller {
 			items.put(item.getId(), item);
 		}
 
-		return "redirect:" + MvcUriComponentsBuilder.fromMethodName(ItemController.class, "edit")
+		return "redirect:" + MvcUriComponentsBuilder.fromMethodName(ItemController.class, "view")
 			.build(item.getId())
 		;
 	}

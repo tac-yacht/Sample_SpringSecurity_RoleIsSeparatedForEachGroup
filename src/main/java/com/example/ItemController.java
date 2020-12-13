@@ -29,6 +29,11 @@ public class ItemController {
 		}
 	}
 
+	@GetMapping
+	public String view() {
+		return "item/read";
+	}
+
 	@GetMapping("edit")
 	public String edit() {
 		return "item/write";
