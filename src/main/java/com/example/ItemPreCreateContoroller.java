@@ -24,7 +24,7 @@ public class ItemPreCreateContoroller {
 	}
 
 	@PostMapping({"/item"/*新規作成*/, "/item/{itemId}"})
-	public String write(@PathVariable("itemId") Optional<String> itemId, @ModelAttribute Item item) {
+	public String write(@PathVariable("itemId") Optional<String> itemId, @ModelAttribute Item item, Model model) {
 		itemId.ifPresent(id -> {
 			if(!id.equals(item.getId())) {
 				throw new RuntimeException("id変更不可");
@@ -39,11 +39,8 @@ public class ItemPreCreateContoroller {
 			items.put(item.getId(), item);
 		}
 
-
-		return "redirect:" + MvcUriComponentsBuilder.fromMethodName(ItemController.class, "edit",
-			//args
-			item.getId(),
-			null
-		).build();
+		return "redirect:" + MvcUriComponentsBuilder.fromMethodName(ItemController.class, "edit")
+			.build(item.getId())
+		;
 	}
 }
