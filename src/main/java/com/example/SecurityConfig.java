@@ -12,6 +12,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.mvcMatchers("/").authenticated()
 				.mvcMatchers("/itemnew", "/item/**").authenticated()
+				.mvcMatchers("/group/{groupId}/**").access("isAuthenticated() and @groupPermission.hasAuthority(principal, #groupId)")
+				//先行評価で認証済みでないと、principal取るときに死ぬ特段ログインに回してはくれない
 				.mvcMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().denyAll()
 			.and()
