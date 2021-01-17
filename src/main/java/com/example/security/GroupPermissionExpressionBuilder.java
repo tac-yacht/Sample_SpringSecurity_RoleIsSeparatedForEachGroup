@@ -10,4 +10,9 @@ public class GroupPermissionExpressionBuilder {
 		return "isAuthenticated() and @" + GROUP_PERMISSION + ".hasAuthority(principal, #"
 				+ pathVariableName + ", '" + authority + "')";
 	}
+
+	public static String hasAnyGroupAuthority(String pathVariableName, String ... authorities) {
+		return "isAuthenticated() and @" + GROUP_PERMISSION + ".hasAnyAuthority(principal, #"
+				+ pathVariableName + ", '" + String.join("','", authorities) +"')";
+	}
 }

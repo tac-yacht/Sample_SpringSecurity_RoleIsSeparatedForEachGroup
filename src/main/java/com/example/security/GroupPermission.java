@@ -21,6 +21,10 @@ public class GroupPermission {
 		return hasAuthority(user.getSingleGroupAuthorities(groupId), authority);
 	}
 
+	public boolean hasAnyAuthority(CustomUser user, String groupId, String ... authorities) {
+		return hasAnyAuthority(user.getSingleGroupAuthorities(groupId), authorities);
+	}
+
 	//ここから↓SecurityExpressionRootを参考に改造
 
 	//セットだけ持ち回すように改造
