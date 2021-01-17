@@ -9,6 +9,10 @@
 <body>
 	group page<br>
 	<span th:text="${groupId}"></span>
+	<hr>
 	<a th:href="@{/itemnew/{groupId}(groupId=${groupId})}">アイテム作成</a>
+	<ul th:each="item: ${@itemController.items}" th:object="${item}">
+		<li><a th:href="@{/item/{groupId}/{itemId}(groupId=*{groupId},itemId=*{id})}" th:text="*{name}"></a></li>
+	</ul>
 </body>
 </html>

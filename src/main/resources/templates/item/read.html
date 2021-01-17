@@ -16,6 +16,7 @@
 	<label>グループID<span th:text="*{groupId}"></span></label><br>
 	<label>name<span th:text="*{name}"></span></label><br>
 	<hr>
-	<a th:href="@{/item/{groupId}/{itemId}/edit(groupId=*{groupId},itemId=*{id})}">編集</a>
+	<a th:href="@{/item/{groupId}/{itemId}/edit(groupId=*{groupId},itemId=*{id})}">編集</a><br>
+	<a th:href="@{/group/{groupId}(groupId=*{groupId})}">グループに戻る</a>
 </body>
 </html>

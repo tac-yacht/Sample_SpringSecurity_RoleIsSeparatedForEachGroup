@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,10 @@ import com.example.entity.Item;
 public class ItemController {
 
 	static final Map<String, Item> items = Collections.synchronizedMap(new HashMap<>());
+
+	public Collection<Item> getItems() {
+		return items.values();
+	}
 
 	@ModelAttribute("item")
 	public Item setItem(
