@@ -7,10 +7,10 @@
 	<meta charset="UTF-8" />
 </head>
 <body>
-	<form th:action="@{/item/{itemId}(itemId=${itemId})}" method="post" th:object="${item}">
+	<form th:action="@{/item/{groupId}/{itemId}(groupId=${groupId},itemId=${itemId})}" method="post" th:object="${item}">
 		<label>ID<input type="text" th:field="*{id}"></label>
 		<label>name<input type="text" th:field="*{name}"></label>
-		<button type="type">submit</button>
+		<button type="submit">submit</button>
 	</form>
 </body>
 </html>

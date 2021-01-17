@@ -13,8 +13,9 @@
 </head>
 <body th:object="${item}">
 	<label>ID<span th:text="*{id}"></span></label><br>
+	<label>グループID<span th:text="*{groupId}"></span></label><br>
 	<label>name<span th:text="*{name}"></span></label><br>
 	<hr>
-	<a th:href="@{/item/{itemId}/edit(itemId=${itemId})}">編集</a>
+	<a th:href="@{/item/{groupId}/{itemId}/edit(groupId=*{groupId},itemId=*{id})}">編集</a>
 </body>
 </html>

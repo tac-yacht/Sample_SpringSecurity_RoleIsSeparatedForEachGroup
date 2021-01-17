@@ -17,14 +17,23 @@ import com.example.entity.Item;
 @Controller
 public class ItemPreCreateContoroller {
 
-	@GetMapping("/itemnew")
-	public String create(Model model) {
+	@GetMapping("/itemnew/{groupId}")
+	public String create(
+		@PathVariable("groupId") String groupId,
+		Model model
+	) {
 		model.addAttribute("item", new Item());
+		model.addAttribute("groupId", groupId);
 		return "item/write";
 	}
 
-	@PostMapping({"/item"/*新規作成*/, "/item/{itemId}"})
-	public String write(@PathVariable("itemId") Optional<String> itemId, @ModelAttribute Item item, Model model) {
+	@PostMapping({"/item/{groupId}"/*新規作成*/, "/item/{groupId}/{itemId}"})
+	public String write(
+		@PathVariable("groupId") String groupId,
+		@PathVariable("itemId") Optional<String> itemId,
+		@ModelAttribute Item item,
+		Model model
+	) {
 		itemId.ifPresent(id -> {
 			if(!id.equals(item.getId())) {
 				throw new RuntimeException("id変更不可");
@@ -36,11 +45,12 @@ public class ItemPreCreateContoroller {
 				throw new RuntimeException("/pathにidがあるのにデータが無い or 新規なのにデータがある");
 			}
 
+			item.setGroupId(groupId);
 			items.put(item.getId(), item);
 		}
 
 		return "redirect:" + MvcUriComponentsBuilder.fromMethodName(ItemController.class, "view")
-			.build(item.getId())
+			.build(groupId, item.getId())
 		;
 	}
 }
