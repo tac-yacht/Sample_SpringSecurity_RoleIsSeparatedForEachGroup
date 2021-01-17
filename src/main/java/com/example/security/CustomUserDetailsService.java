@@ -22,8 +22,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 		Map<String, CustomUser> temp = new HashMap<>();
 		{
 			Map<String, Collection<? extends GrantedAuthority>> groupAuthorities = new HashMap<>();
-				groupAuthorities.put("groupA", Collections.singleton(new SimpleGrantedAuthority("USER")));
+				groupAuthorities.put("groupA", Collections.singleton(new SimpleGrantedAuthority("ADMIN")));
 			temp.put("user1", new CustomUser("user1", "{noop}a", Collections.emptyList(), groupAuthorities));
+		}
+		{
+			Map<String, Collection<? extends GrantedAuthority>> groupAuthorities = new HashMap<>();
+				groupAuthorities.put("groupA", Collections.singleton(new SimpleGrantedAuthority("USER")));
+			temp.put("user2", new CustomUser("user2", "{noop}a", Collections.emptyList(), groupAuthorities));
 		}
 		dummyUsers = Collections.unmodifiableMap(temp);
 	}
