@@ -9,5 +9,7 @@
 <body>
 	root page<br>
 	login user: <span sec:authentication="name"></span>
+	<hr>
+	<a th:href="@{/group/{groupId}(groupId='groupA')}">グループA</a>
 </body>
 </html>

@@ -9,5 +9,6 @@
 <body>
 	group page<br>
 	<span th:text="${groupId}"></span>
+	<a th:href="@{/itemnew/{groupId}(groupId=${groupId})}">アイテム作成</a>
 </body>
 </html>
